@@ -1,0 +1,71 @@
+<div   class="container-fluid"
+       id="screen">
+   <div class="container-fluid"
+       id="contenedor">
+
+       <div class="row">
+              <div class="col-12"
+              id="row_titulo">
+              <p id="titulo">Iniciar Sesión</p>
+              </div>
+       </div>
+       <div class="row">
+              <div   class="col-12 col-md-6 offset-md-3"
+                     id="row_centrada">
+
+                     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                            
+                            <div class="form-row" >
+                                <div class="form-group col-12 " >
+                                    <label class="labels" id="firstLabel">Correo electrónico:</label>
+                                    <input  id="email" 
+                                            name="email" 
+                                            type="email" 
+                                            formControlName="email" 
+                                            class="form-control" 
+                                            placeholder="correo@ejemplo.com"
+                                    />                                       
+                                    <div *ngIf="email!.dirty || email!.touched">  
+                                        <p class="warningAlert"
+                                           *ngIf="email!.invalid && email!.errors!.required"
+                                           >Debe ingresar su correo electrónico
+                                        </p>
+                                        <p class="warningAlert" 
+                                           *ngIf="(email!.invalid && email!.errors!.pattern)"
+                                           >Direccion de correo invalida
+                                        </p>                                           
+                                    </div> 
+                                </div>
+                                <div class="form-group col-12" >
+                                    <label class="labels">Contraseña:</label>
+                                    <input id="password" 
+                                           name="password" 
+                                           type="password" 
+                                           formControlName="password" 
+                                           class="form-control" 
+                                           placeholder="••••••••••••••••" 
+                                    />
+                                    <div *ngIf="password!.dirty || password!.touched">  
+                                        <p class="warningAlert" 
+                                           *ngIf="password!.invalid && password!.errors!.required"
+                                           >Debe ingresar su contraseña
+                                        </p>                                         
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-8 offset-md-2" id="buttonCol">
+                                    <button class="btn" 
+                                            id="submitButton"
+                                            type="submit" >Iniciar sesión
+                                    </button>                                 
+                                </div>
+                                <div class="col-12 col-md-8 offset-md-2" id="errorMessageCol">
+                                    <p *ngIf="messageFlag === 1" class="warningAlert">Datos incorrectos</p>
+                                </div>
+                            </div>
+                    </form>
+              </div>
+       </div>
+       </div>
+</div>
